@@ -25,3 +25,5 @@ const students = [
     marks: [60, 70, 80, 90]
   }
 ];
+
+//problem statement : convert the given objects in array in below formats 
