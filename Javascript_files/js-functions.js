@@ -52,3 +52,14 @@ const proStudents = students.map(student => {
 );
 console.log(proStudents); 
 
+
+
+//use filter function to get the students who have passed the course 
+
+const passedStudents = proStudents.filter(student => student.result === "Pass");
+console.log(passedStudents);
+
+//use filter function to get the students who have failed the course
+const failedStudents = proStudents.filter(student => student.result === "Fail");
+console.log(failedStudents);  
+
