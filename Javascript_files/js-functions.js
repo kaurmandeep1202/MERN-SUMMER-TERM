@@ -134,6 +134,7 @@ const orderAnalytics = orders.map(order => {
   const rewardPoints = order.paymentStatus === "Paid" ? Math.floor(netAmount / 100) : 0;
 
   return {
+    items:JSON.stringify(order.items), // Convert items array to a string for better readability
     orderId: order.orderId,
     customerName: order.customerName,
     city: order.city,
