@@ -26,4 +26,31 @@ const students = [
   }
 ];
 
-//problem statement : convert the given objects in array in below formats 
+//problem statement : convert the given objects in array in below formats  - max marks is above 150,, if percentage is above 50 then result is pass otherwise fail.
+//[
+// {
+//   name: "John Doe",
+//   course : "Full Stack Development",
+//   marks: [22, 45, 67, 89]
+//   totmarks: 223,
+//   percentage: 55.75,
+//   result: "Pass"
+// }]
+
+const proStudents = students.map(student => {
+  const totalMarks = student.marks.reduce((acc, mark) => acc + mark, 0);
+  const percentage = (totalMarks / 400) * 100;
+  const result = percentage > 50 ? "Pass" : "Fail";
+
+  return {
+    name: student.name,
+    course: student.course,
+    marks: student.marks,
+    totmarks: totalMarks,
+    percentage: percentage.toFixed(2),
+    result: result
+  };
+}
+);
+console.log(proStudents); 
+
