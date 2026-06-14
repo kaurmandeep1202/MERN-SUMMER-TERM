@@ -109,3 +109,44 @@ const orders = [
     ]
   }
 ];
+
+
+//using map reduce and normal javascript logic generate a complete order analytics report. convert into below format 
+//{order id: 
+//customer name:
+//city:
+//payment status:
+// totalitems:
+// gross amount: 
+// total discount: 
+// net amount:
+// order status:
+// reward points:
+//  }
+
+//do it 
+const orderAnalytics = orders.map(order => {
+  const totalItems = order.items.reduce((acc, item) => acc + item.quantity, 0);
+  const grossAmount = order.items.reduce((acc, item) => acc + (item.price * item.quantity), 0); 
+  const totalDiscount = order.items.reduce((acc, item) => acc + ((item.price * item.quantity) * (item.discount / 100)), 0);
+  const netAmount = grossAmount - totalDiscount;  
+  const orderStatus = order.paymentStatus === "Paid" ? "Completed" : (order.paymentStatus === "Pending" ? "In Progress" : "Failed");
+  const rewardPoints = order.paymentStatus === "Paid" ? Math.floor(netAmount / 100) : 0;
+
+  return {
+    orderId: order.orderId,
+    customerName: order.customerName,
+    city: order.city,
+    paymentStatus: order.paymentStatus,
+    totalItems,
+    grossAmount,
+    totalDiscount,
+    netAmount,
+    orderStatus,
+    rewardPoints
+  };
+});
+
+console.log(orderAnalytics);  
+
+
