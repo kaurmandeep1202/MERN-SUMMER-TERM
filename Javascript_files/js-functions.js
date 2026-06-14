@@ -38,17 +38,15 @@ const students = [
 // }]
 
 const proStudents = students.map(student => {
-  const totalMarks = student.marks.reduce((acc, mark) => acc + mark, 0);
-  const percentage = (totalMarks / 400) * 100;
+  const totalMarks = student.marks.reduce((acc, mark) => {return acc + mark }, 0);
+  const percentage = ((totalMarks / 400) * 100).toFixed(2);
   const result = percentage > 50 ? "Pass" : "Fail";
 
   return {
-    name: student.name,
-    course: student.course,
-    marks: student.marks,
-    totmarks: totalMarks,
-    percentage: percentage.toFixed(2),
-    result: result
+    ...student,
+    totmarks,
+    percentage,
+    result
   };
 }
 );
