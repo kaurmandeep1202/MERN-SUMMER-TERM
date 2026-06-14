@@ -31,8 +31,10 @@ react components, next.js frameworks , production web app
 react - ui library 
 next.js - react + routing + rendering + backened  + optimization 
 
-
-
+1. 
+npm create vite@latest key-shop
+select react
+then javascript
 
 routing - 
 
