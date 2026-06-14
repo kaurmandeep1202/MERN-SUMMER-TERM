@@ -20,3 +20,28 @@ HOISTING
 
 
 come out of current program - ctrl c 
+
+
+dummyjson.com 
+
+next.js - framework react -  admin panel -- ecommerce shop for selling an keychains  
+automatic file based routing server rendering image font script 
+react components, next.js frameworks , production web app 
+
+react - ui library 
+next.js - react + routing + rendering + backened  + optimization 
+
+
+
+
+routing - 
+
+rendering - 
+
+data/api
+
+demo 
+
+
+
+
