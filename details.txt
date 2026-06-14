@@ -1,0 +1,22 @@
+latest  26.3.0 n lts version -- long term support -- buy phone -- bugs recent bugs...
+
+run the javascript file - node filename.js 
+
+-17.57 left 
+
+
+request respnse server 
+
+varaibles -- var let const
+
+ECMA SCRIPT SIX EC6
+
+ARROW FUNCTION '
+
+TEMPORAL DEADZONE 
+
+
+HOISTING 
+
+
+come out of current program - ctrl c 
