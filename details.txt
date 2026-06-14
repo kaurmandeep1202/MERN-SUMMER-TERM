@@ -36,6 +36,10 @@ npm create vite@latest key-shop
 select react
 then javascript
 
+npm run dev 
+
+
+
 routing - 
 
 rendering - 
