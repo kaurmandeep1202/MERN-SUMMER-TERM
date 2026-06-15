@@ -1,21 +1,32 @@
- //delete the entire code 
- 
+//delete the entire code 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
 
- function App() {
-  return (
-     <div className="App">
-      <Header />
-      <marquee><h1>Welcome to Key Shop</h1></marquee>
-    
-      <Footer />
-    </div>
-      )
-}
+import Home from './pages/Home';
+import Products from './pages/Products';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
-//.jsx file is used to write html code in javascript file
-//returns html code in javascript file
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </BrowserRouter>
+  );
+}
 
 export default App;
