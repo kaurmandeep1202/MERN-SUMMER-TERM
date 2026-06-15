@@ -38,6 +38,10 @@ then javascript
 
 npm run dev 
 
+components 
+
+
+
 
 
 routing - 

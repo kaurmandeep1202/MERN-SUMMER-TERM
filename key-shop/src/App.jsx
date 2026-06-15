@@ -1,14 +1,16 @@
  //delete the entire code 
-
-//import header from './header.jsx'
-import header from './components/header.jsx'
+ 
+import Header from './components/Header';
+import Footer from './components/Footer';
+import './App.css';
 
  function App() {
   return (
      <div className="App">
-      <h1>Welcome to Key Shop</h1>
-      <p>This app is just for demonstration purposes.</p>
-      <button> click me</button>
+      <Header />
+      <marquee><h1>Welcome to Key Shop</h1></marquee>
+    
+      <Footer />
     </div>
       )
 }
