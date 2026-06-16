@@ -43,7 +43,10 @@ components
 react router dom - npm install react-router-dom
 
 
+npm run dev -- --host
 
+http://localhost:5173/
+second one http://192.168.1.3:5173/
 
 
 routing - 

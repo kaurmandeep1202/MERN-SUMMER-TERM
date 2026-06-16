@@ -5,8 +5,11 @@ function Contact() {
       <section className="contact">
         <h1>Contact Us</h1>
         <p>If you have any questions or inquiries, please feel free to contact us. We are here to help and provide you with the best service possible. You can reach us through the form below or via email at
-        <a href="mailto:info@keyshop.com">info@keyshop.com</a></p>
+         </p>
       </section>
     </div>
   );
 }
+
+
+export default Contact;
