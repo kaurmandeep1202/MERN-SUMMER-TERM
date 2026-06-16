@@ -59,4 +59,14 @@ demo
 
 
 
+to avoid flicker -- we will use native tags -- links tags
+in header file 
+
+
+virtual dom 
+
+hooks 
+1. use state - function component 
+
+
 
