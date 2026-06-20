@@ -1,16 +1,20 @@
-import { useState } from "react";
-function Home() {
-  const [counter, setCounter] = useState(0);
 
+function Home() {
+   
   return (
    //simple welcome page for the key shop app
-    <div className = "page">
-      <section className="home">
-        <h1>Welcome to Key Shop</h1>
-        <h2> Current value of counter is : {counter}</h2>
-        <p>Your one-stop shop for stylish and personalized key rings.</p>
-        <button onClick={() => setCounter(counter + 1)}> Click Me</button>
+    <div className = "home">
+      <section className ="hero">
+        <div className="heroText">
+          <h2> Beautful Key Chain ForEveryStyle </h2>
+          <p> Explore stylish, cute and customized key chains for yourself and yours friends and family </p>
+          <button> Shop Now </button>
+        </div>  
+
+        <div className="heroImage">
         
+         <img src ="/images/keychain.jpg" alt="keychain" height="50%" width=" 50%"/>
+        </div>
       </section>
     </div>
   );

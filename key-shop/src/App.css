@@ -55,3 +55,53 @@ nav ul li a:hover {
   text-align: center;
   padding: 15px;
  }
+
+
+ .hero{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 60px;
+  background: linear-gradient(135deg, #fff7ed, #fde78a)
+ }
+
+ .heroText{
+  width: 50%;
+ }
+
+ .heroText h2{
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #111827;
+ }
+
+ .heroText p{
+  font-size: 18px;
+  margin-bottom: 25px;
+   line-height: 1.6;
+ }
+
+ .heroText button{
+  padding: 12px 28px;
+  font-size: 16px;
+  background-color: #111827;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+ }
+
+ .heroText button:hover{
+  background-color: #374151;
+ }
+
+ .heroImage{
+  max-width: 360px;
+  height:280px;
+  background-color: #f3f4f6;
+  border: 3px dashed #d97706;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }

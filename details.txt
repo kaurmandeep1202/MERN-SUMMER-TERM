@@ -67,6 +67,56 @@ virtual dom
 
 hooks 
 1. use state - function component 
+//what is use state? it is a hook that allows us to add state to our functional components. it returns an array with two elements: the current state and a function that updates the state. we can use it to create a counter that increments every time we click a button.
+import { useState } from "react";
+ 
+function Home() {
+  const [counter, setCounter] = useState(0);
+  const [btn, setBtnText] = useState('Hello');
+
+  return (
+   //simple welcome page for the key shop app
+    <div className = "page">
+      <section className="home">
+        <h1>Welcome to Key Shop</h1>
+        <h2> Current value of counter is : {counter}</h2>
+        <p>Your one-stop shop for stylish and personalized key rings.</p>
+        <button onClick={() => setCounter(counter + 1)}> Click Me</button>
+        
+        <br/>
+        <br/>
+       
+
+        <button onClick={() => btn == 'Hello' ? setBtnText('Bye') : setBtnText('Hello')}>{btn} </button>
+
+
+
+
+      </section>
+    </div>
+  );
+}
+
+export default Home;
+
+
+//to install tailwind 
+npm install tailwind @tailwindcss/vite 
+in vite.config .. we have to import tailwind 
+in css we have to write @import .. something 
+
+
+
+
+-- design home page 
+ 
+
+
+
+
+
+
+
 
 
 
