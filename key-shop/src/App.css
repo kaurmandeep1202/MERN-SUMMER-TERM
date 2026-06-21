@@ -96,7 +96,7 @@ nav ul li a:hover {
  }
 
  .heroImage{
-  max-width: 360px;
+  width: 360px;
   height:280px;
   background-color: #f3f4f6;
   border: 3px dashed #d97706;
@@ -105,3 +105,75 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
  }
+
+
+ /* products section  */
+
+.products{
+  padding: 60px;
+  text-align: center;
+   
+}
+
+.products h2{
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.productGrid{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+
+}
+
+.card{
+  background-color: #f3f4f6;
+  width: 280px;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+   flex-direction: column;
+
+}
+
+.imageBox img{
+  width:100%;
+  object-fit: cover;
+  height: 200px;
+ background-color: #e5e7eb;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#6b7280;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.card h3{
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.card strong{
+  color: #d97706;
+  font-size: 20px;
+}
+
+.cardBtn{
+  margin-top: 12px ;
+  width: 100%;
+  background-color: #111827;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor:pointer;
+}
+
+.cardBtn:hover{
+  background-color: #d97706;
+}
