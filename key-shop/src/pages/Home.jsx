@@ -68,6 +68,7 @@ function Home() {
          <section className="about">
            
            <h2> Why Choose Us?</h2>
+            <p> We provide affordable, durable  </p>
          </section>
 
     </div>
