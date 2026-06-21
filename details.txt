@@ -106,6 +106,8 @@ in vite.config .. we have to import tailwind
 in css we have to write @import .. something 
 
 
+destructuring
+--object and arrays 
 
 
 -- design home page 

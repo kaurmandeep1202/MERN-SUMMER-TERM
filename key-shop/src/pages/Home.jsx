@@ -16,7 +16,7 @@ function Home() {
 
         <div className="heroImage">
         
-         <img src ="/images/keychain.jpg" alt="keychain" height="50%" width=" 50%"/>
+         <img src ="/images/keychain.jpg" alt="keychain" height="100%" width=" 100%"/>
         </div>
       </section>
 
@@ -56,7 +56,15 @@ function Home() {
              <button className="cardBtn"> Add to Cart </button>
           </div>
 
-        
+                <div className="card">
+               <div className="cardBox">
+                <img src ="/images/avenger.jpg" alt="leather keychain" height="100%" width="100%"/>
+               </div> 
+             <h3> The Avenger Key Chain </h3>
+             <p> Your super hero key chain</p>
+             <strong> $13 </strong>
+             <button className="cardBtn"> Add to Cart </button>
+          </div>
 
         </div>
 
@@ -68,7 +76,7 @@ function Home() {
          <section className="about">
            
            <h2> Why Choose Us?</h2>
-            <p> We provide affordable, durable  </p>
+            <p> We provide affordable, durable and nice designs, perfect for gifting.</p>
          </section>
 
     </div>
