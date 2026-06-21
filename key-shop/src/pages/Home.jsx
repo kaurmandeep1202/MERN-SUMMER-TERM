@@ -1,5 +1,5 @@
 
-function Home() {
+function Home({ addToCart }) {
    
   return (
    //simple welcome page for the key shop app
@@ -33,7 +33,7 @@ function Home() {
              <h3> Cartoon Key Chain </h3>
              <p> Colorful and cute design</p>
              <strong> $10 </strong>
-             <button className="cardBtn"> Add to Cart </button>
+             <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
 
           <div className="card">
@@ -43,7 +43,7 @@ function Home() {
              <h3> Name Key Chain </h3>
              <p> Customized with your name</p>
              <strong> $12 </strong>
-             <button className="cardBtn"> Add to Cart </button>
+             <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
 
           <div className="card">
@@ -53,7 +53,7 @@ function Home() {
              <h3> Leather Key Chain </h3>
              <p> Classy and durable Look</p>
              <strong> $14 </strong>
-             <button className="cardBtn"> Add to Cart </button>
+             <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
 
                 <div className="card">
@@ -63,7 +63,7 @@ function Home() {
              <h3> The Avenger Key Chain </h3>
              <p> Your super hero key chain</p>
              <strong> $13 </strong>
-             <button className="cardBtn"> Add to Cart </button>
+             <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
 
         </div>

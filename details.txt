@@ -110,6 +110,13 @@ destructuring
 --object and arrays 
 
 
+prop -- home({add to cart})
+props in react youtube video 
+
+
+48.00 19 june 20226
+
+
 -- design home page 
  
 
