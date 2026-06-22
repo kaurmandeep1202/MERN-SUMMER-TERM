@@ -1,6 +1,37 @@
 
 function Home({ addToCart }) {
-   
+   const products = [
+    {
+      name:'Cartoon Key Chain',
+      description: 'colorful and cute design',
+      price: '$10',
+      image: '/images/cartoon.jpg'
+
+    },
+
+
+    {
+      name:' Name key chain',
+      description: 'Customized with your name ',
+      price: '$12',
+      image: '/images/nameee.jpg'
+    },
+
+    {
+      name:'Leather Key Chain',
+      description: 'Classy and durable Look',
+      price: '$14',
+      image: '/images/leather.jpg'
+    },
+
+    {
+      name:'The Avenger Key Chain',
+      description: 'Your super hero key chain',
+      price: '$13',
+      image: '/images/avenger.jpg'
+    }
+
+   ];
   return (
    //simple welcome page for the key shop app
     <div className = "home">
@@ -26,7 +57,10 @@ function Home({ addToCart }) {
       <section className="products">
         <h2> Our Popular Key Chains </h2>
         <div className="productGrid">
-          <div className="card">
+
+          {products.map((products, index)=> {
+            
+            <div className="card">
                <div className="cardBox">
                 <img src ="/images/cartoon.jpg" alt="cartoon keychain" height="100%" width="100%"/>
                </div> 
@@ -35,8 +69,11 @@ function Home({ addToCart }) {
              <strong> $10 </strong>
              <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
+          })}
 
-          <div className="card">
+           
+
+          {/* <div className="card">
                <div className="cardBox">
                 <img src ="/images/nameee.jpg" alt="name keychain" height="205px" width="100%"/>
                </div> 
@@ -64,7 +101,7 @@ function Home({ addToCart }) {
              <p> Your super hero key chain</p>
              <strong> $13 </strong>
              <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
-          </div>
+          </div> */}
 
         </div>
 
