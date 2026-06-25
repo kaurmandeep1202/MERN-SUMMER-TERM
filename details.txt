@@ -122,6 +122,10 @@ props in react youtube video
 
 
 
+mongodb atlas - online cloud - db 
+compass - ui to view your db 
+mongo db - database server
+
 
 
 

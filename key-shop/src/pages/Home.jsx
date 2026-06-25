@@ -10,12 +10,12 @@ function Home({ addToCart }) {
     },
 
 
-    {
-      name:' Name key chain',
-      description: 'Customized with your name ',
-      price: '$12',
-      image: '/images/nameee.jpg'
-    },
+    // {
+    //   name:' Name key chain',
+    //   description: 'Customized with your name ',
+    //   price: '$12',
+    //   image: '/images/nameee.jpg'
+    // },
 
     {
       name:'Leather Key Chain',
@@ -58,18 +58,21 @@ function Home({ addToCart }) {
         <h2> Our Popular Key Chains </h2>
         <div className="productGrid">
 
-          {products.map((products, index)=> {
+
+
+    {/* MAP FUNCTION USED  */}
+          {products.map((product, index)=> (
             
             <div className="card">
                <div className="cardBox">
-                <img src ="/images/cartoon.jpg" alt="cartoon keychain" height="100%" width="100%"/>
+                <img src ={product.image} alt="cartoon keychain" height="100%" width="100%"/>
                </div> 
-             <h3> Cartoon Key Chain </h3>
-             <p> Colorful and cute design</p>
-             <strong> $10 </strong>
+             <h3>{product.name} </h3>
+             <p> {product.description}</p>
+             <strong> {product.price} </strong>
              <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
           </div>
-          })}
+          ))}
 
            
 
