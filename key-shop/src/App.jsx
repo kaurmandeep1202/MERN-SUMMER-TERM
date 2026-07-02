@@ -11,10 +11,25 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
+  //const [cartCount, setCartCount] = useState(0);
+ const [cartItems, setCartItems] = useState([]);
 
-  function addToCart(){
-    setCartCount(cartCount + 1);
+
+  function addToCart(product){
+    //setCartCount(cartCount + 1);
+    setCartItems((previousCartItems) => {
+      const productAlreadyInCart = previousCartItems.find(item => item.id == product.id);
+      
+      if(productAlreadyInCart){
+        return previousCartItems.map((item) => {
+         item.id ==product.id ? {
+          //use rest operate ...item 
+          ...item, quantity: item.quantity + 1 
+         } : item;    
+        });
+      }
+      return [...previousCartItems, {...product, quantity: 1}];
+    })
   }
 
   return (

@@ -128,7 +128,23 @@ mongo db - database server
 
 
 
+23 june --- 45.00
 
+how to change the port number  
+-- open vite.config.js 
+-- write under plugin 
+-- server: {
+  port: 5000
+}
+
+-- now we will know about the cart of individual .. how many items are added to a particular cart block 
+-- lets create a cart page 
+-- now just go to app.jsx then comment out the const line
+-- now we are just doing what type of items has been added 
+-- const [cartItems, setCartItems] = useState([]);
+-- 
+
+25.04
 
 
 
