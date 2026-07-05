@@ -160,6 +160,19 @@ changes to header.jsx
 now we will do to css of app.css
 
 
+25.june
+-- 
+u can also deploy in netlify, aws cloud, vercel 
+so for starting u can do it on vercel 
+
+
+u can deploy this app on vercel 
+vercel.com
+u havee to write on vs code terminal - 
+vercel --prod 
+
+
+
 
 
 

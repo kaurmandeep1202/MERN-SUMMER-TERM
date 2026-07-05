@@ -14,11 +14,11 @@ import Cart from "./pages/cart";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+ 
+ const cartCount = cartItems.reduce(
+  (total, item) => total + item.quantity,
+  0
+);
 
   function addToCart(product) {
     
@@ -31,16 +31,17 @@ function App() {
         (item) => item.id === product.id
       );
 
-      if (productAlreadyInCart) {
-        return previousCartItems.map((item) =>
-          item.id === product.id
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item
-        );
-      }
+if (productAlreadyInCart) {
+  return previousCartItems.map((item) => {
+    if (item.id === product.id) {
+      return {
+        ...item,
+        quantity: item.quantity + 1,
+      };
+    }
+    return item;
+  });
+}
 
       return [...previousCartItems, { ...product, quantity: 1 }];
     });
