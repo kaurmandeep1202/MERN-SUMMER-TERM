@@ -10,7 +10,7 @@ function Header({cartCount}) {
           <li><Link to="/products">Products</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li>🛒Cart({cartCount})</li>
+          <li><Link to="/cart"> 🛒Cart({cartCount})</Link></li>
         </ul>
       </nav>
     </header>

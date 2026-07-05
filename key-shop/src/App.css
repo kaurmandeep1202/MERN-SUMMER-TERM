@@ -194,3 +194,28 @@ nav ul li a:hover {
   font-size:17px;
   line-height:1.6;
 }
+
+
+/* Cart Page */
+.emptyCart{
+  min-height: 55vh;
+  text-align:center;
+  padding-top: 120px;
+
+}
+
+.emptyCart {
+  color: #111827;
+}
+
+.continueShoppingBtn{
+  width: fit-content;
+  margin: 25px auto;
+  background-color: #111827;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+   
+
+}

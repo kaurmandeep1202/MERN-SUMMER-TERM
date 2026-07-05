@@ -145,6 +145,20 @@ how to change the port number
 -- 
 
 25.04
+we also added in app.jsx 
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+then we have added cart page and then start making 
+
+there is conditional rendering concept -- 
+-- changes to app.jsx
+changes to cart.jsx
+changes to header.jsx
+now we will do to css of app.css
+
 
 
 
