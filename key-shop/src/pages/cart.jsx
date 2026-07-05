@@ -1,9 +1,11 @@
 import {Link} from 'react-router-dom';
  
 
-function cart({cartItems, increaseQuantity, decreaseQuantity}) {
+function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart}) {
    
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
+    const totalItems = cartItems.reduce((total,item) => total + item.quantity ,0);
 
   if(cartItems.length === 0){
     return(
@@ -22,12 +24,13 @@ function cart({cartItems, increaseQuantity, decreaseQuantity}) {
     <div className="cartHeading">
       <h1> Your Shopping cart</h1>
 
-       <button className="clearCartBtn">
+       <button className="clearCartBtn" onClick={clearCart}>
       Clear Cart
     </button>
     </div>
 
     <div className="cartLayout">
+      
       <div className="cartItems">
         {
           cartItems.map((item)=> (
@@ -49,11 +52,45 @@ function cart({cartItems, increaseQuantity, decreaseQuantity}) {
             <strong> ${item.price * item.quantity}</strong>
             <button className="removeBtn">Remove</button>
           </div>   
+        
+
+
+
         </div>
            ))
         }
+
+
+        
       </div>
-    </div>     
+     
+
+     <div className="cartSummary">
+      <h2> Order Summary</h2>
+
+      <div className="summaryRow">
+        <span> Total Items</span>
+        <strong> 
+          {/* {cartItems.length} -- we have created total items at above  */} 
+          {totalItems}
+        </strong>
+      </div>
+
+      <div className="summaryRow totalRow">
+        <span> Total Amount</span>
+        <strong> ${totalAmount}</strong>
+      </div>    
+        <button className="checkOutBtn">Proceed To Checkout</button>
+        <Link to="/" className="continueLink">Continue Shopping </Link>
+    </div>  
+
+  
+     
+
+
+    </div>  
+
+     
   </section>
  )
 

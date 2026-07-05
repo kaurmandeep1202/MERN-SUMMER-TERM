@@ -18,6 +18,8 @@ function App() {
  const cartCount = cartItems.reduce(
   (total, item) => total + item.quantity,
   0);
+
+ 
   
   function increaseQuantity(productId){
     setCartItems((previousCartItems) => {
@@ -34,6 +36,11 @@ function App() {
         return item.id === productId ? {...item, quantity:item.quantity - 1} : item;
        }).filter((item) => item.quantity > 0);
     })
+  }
+
+  
+  function clearCart() {
+    setCartItems([]);
   }
 
 
@@ -76,7 +83,7 @@ if (productAlreadyInCart) {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Home />} />
-            <Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>}/>
+            <Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearCart={clearCart}/>}/>
           </Routes>
           
         </main>

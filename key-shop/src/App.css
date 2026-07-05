@@ -199,6 +199,7 @@ nav ul li a:hover {
 /* Cart Page */
 
 .cartPage{
+  width: 95%;
   max-width: 1200px;
   margin: auto;
   padding: 50px 30px;
@@ -254,35 +255,25 @@ nav ul li a:hover {
 
 }
 
-/* .cartLayout{
+.cartLayout{
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 68% 30%;
+  /*  grid-template-columns:2fr 1fr; */
   gap: 30px;
   background-color: white;
   padding: 18px;
   border-radius: 14px; 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
-} */
-
-.cartLayout{
-  display: grid;
-  grid-template-columns: 7fr 1fr;
-  gap: 28px;
-   
+   /* align-items:start; */
+  box-shadow: 0 4px 15px rgba(239, 232, 232, 0.8);
 }
 
-/* 
-.cartItem img{
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
+ 
 
-} */
+
 
 .cartItem img{
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
+  width: 95px;
+  height: 95px;
   border-radius: 10px;
 }
 
@@ -299,11 +290,12 @@ nav ul li a:hover {
 .cartItem{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   background-color: white;
-  padding: 18px;
+  padding: 22px;
   border-radius: 14px; 
-  box-shadow: 0px 4px 15px rgba(222, 213, 213, 0.8);
+  box-shadow: 0px 4px 15px rgba(233, 223, 223, 0.08);
 
 }
 
@@ -349,11 +341,19 @@ nav ul li a:hover {
   text-align: center;
 }
 
+.cartItemRight{
+    min-width:130px;
+    text-align:right;
+}
+
+/* pushed code new */
 .cartItemRight strong{
  font-size: 20px;
  color: #d97706;
  
 }
+
+ 
 
 .removeBtn{
   border: none;
@@ -365,5 +365,52 @@ nav ul li a:hover {
 }
 
  
+/* cart summary page */
+.cartSummary{
+ background-color: #fff7ed;
+ border-radius: 15px;
+ padding: 25px;
+ position: sticky;
+ top: 90px;
+}
 
+.cartSummary h2{
+  margin-top: 0;
+  color: #111827;
 
+}
+
+.summaryRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0px;
+  border-bottom: 1px solid #f0c98b;
+}
+
+.totalRow{
+  font-size: 19px;
+  border-bottom: none;
+  
+}
+
+.totalRow strong{
+  color: #d97706;
+
+}
+
+.checkOutBtn{
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px;
+  border: none;
+  border-radius: 25px;
+  background-color: #111827;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.checkOutBtn:hover{
+  background-color: #d97706;
+  transform: translateY(-3px);
+}
