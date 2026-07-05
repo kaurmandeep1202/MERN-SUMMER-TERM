@@ -17,8 +17,25 @@ function App() {
  
  const cartCount = cartItems.reduce(
   (total, item) => total + item.quantity,
-  0
-);
+  0);
+  
+  function increaseQuantity(productId){
+    setCartItems((previousCartItems) => {
+       return previousCartItems.map((item) => {
+        return item.id === productId ? {...item, quantity:item.quantity + 1} : item;
+       })
+    })
+  }
+
+
+   function decreaseQuantity(productId){
+    setCartItems((previousCartItems) => {
+       return previousCartItems.map((item) => {
+        return item.id === productId ? {...item, quantity:item.quantity - 1} : item;
+       }).filter((item) => item.quantity > 0);
+    })
+  }
+
 
   function addToCart(product) {
     
@@ -59,7 +76,7 @@ if (productAlreadyInCart) {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Home />} />
-            <Route path="/cart" element={<Cart cartItems={cartItems} />}/>
+            <Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>}/>
           </Routes>
           
         </main>

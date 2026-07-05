@@ -254,7 +254,7 @@ nav ul li a:hover {
 
 }
 
-.cartLayout{
+/* .cartLayout{
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 30px;
@@ -262,6 +262,108 @@ nav ul li a:hover {
   padding: 18px;
   border-radius: 14px; 
   box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+} */
+
+.cartLayout{
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  gap: 28px;
+   
 }
+
+/* 
+.cartItem img{
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+
+} */
+
+.cartItem img{
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+.cartItems{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+ 
+
+
+.cartItem{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  padding: 18px;
+  border-radius: 14px; 
+  box-shadow: 0px 4px 15px rgba(222, 213, 213, 0.8);
+
+}
+
+
+.cartItemDetails{
+  flex: 1;
+
+}
+
+.cartItemDetails h3{
+  margin: 0;
+  color: #6b7280;
+}
+
+.quantityBox{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+}
+
+.quantityBox button{
+  width: 32px; 
+  height: 32px;
+  border:none;
+  border-radius: 6px;
+  color: white;
+  background-color: #111827;
+  font-size: 20px;
+  cursor: pointer;
+
+}
+
+ 
+.quantityBox button:hover{
+  background-color: #d97706;
+}
+
+.quantityBox span{
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cartItemRight strong{
+ font-size: 20px;
+ color: #d97706;
+ 
+}
+
+.removeBtn{
+  border: none;
+  background-color: transparent;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+ 
 
 

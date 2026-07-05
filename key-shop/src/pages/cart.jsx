@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
  
 
-function cart({cartItems}){
+function cart({cartItems, increaseQuantity, decreaseQuantity}) {
    
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  if(cartItems.Length == 0){
+  if(cartItems.length === 0){
     return(
       <section className="cartPage emptyCart"> 
       <h1> Your cart is empty</h1>
@@ -31,22 +31,22 @@ function cart({cartItems}){
       <div className="cartItems">
         {
           cartItems.map((item)=> (
-          <div className="cartItem">
+          <div className="cartItem" key={item.id}>
             <img src={item.image} alt={item.name}></img>
             <div className="cartItemDetails">
               <h3> {item.name}</h3>
-              <p>{item.price} each</p>
+              <p>${item.price} each</p>
    
             <div className="quantityBox">
-              <button> - </button>
+              <button onClick = {() => decreaseQuantity(item.id)}> - </button>
               <span>{item.quantity}</span>
-              <button> + </button>
+              <button onClick = {() => increaseQuantity(item.id)}> + </button>
 
             </div>
           </div>  
  
           <div className="cartItemRight">
-            <strong> {item.price * item.quantity}</strong>
+            <strong> ${item.price * item.quantity}</strong>
             <button className="removeBtn">Remove</button>
           </div>   
         </div>

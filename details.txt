@@ -172,7 +172,38 @@ u havee to write on vs code terminal -
 vercel --prod 
 
 
+we have just done increase and decrease on click of the button 
+so first thing is to do 
+-------- make a function of increaseQuantity in app.jsx 
+ function increaseQuantity(productId){
+    setCartItems((previousCartItems) => {
+       return previousCartItems.map((item) => {
+        return item.id === productId ? {...item, quantity:item.quantity + 1} : item;
+       })
+    })
+  }
+
+-----now at <route> section u just have to pass functions through props 
+like this in app.jsx
+<Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>}/>
+</Routes>
+
+-----then go to the cart.jsx -- call decreasequantity over there at starting 
+function cart({cartItems, increaseQuantity, decreaseQuantity}) 
+
+------- then where u have added button there u have to make changes with onclick 
+<div className="quantityBox">
+<button onClick = {() => decreaseQuantity(item.id)}> - </button>
+<span>{item.quantity}</span>
+<button onClick = {() => increaseQuantity(item.id)}> + </button>
 
 
 
-
+----- at last quantity cannot be in minus so we have to use filter 
+ function decreaseQuantity(productId){
+    setCartItems((previousCartItems) => {
+       return previousCartItems.map((item) => {
+        return item.id === productId ? {...item, quantity:item.quantity - 1} : item;
+       }).filter((item) => item.quantity > 0);
+    })
+  }
