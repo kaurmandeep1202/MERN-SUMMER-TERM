@@ -2,6 +2,7 @@
 function Home({ addToCart }) {
    const products = [
     {
+      id:101,
       name:'Cartoon Key Chain',
       description: 'colorful and cute design',
       price: '$10',
@@ -18,6 +19,7 @@ function Home({ addToCart }) {
     // },
 
     {
+      id:102,
       name:'Leather Key Chain',
       description: 'Classy and durable Look',
       price: '$14',
@@ -25,6 +27,7 @@ function Home({ addToCart }) {
     },
 
     {
+      id:103,
       name:'The Avenger Key Chain',
       description: 'Your super hero key chain',
       price: '$13',
@@ -70,7 +73,7 @@ function Home({ addToCart }) {
              <h3>{product.name} </h3>
              <p> {product.description}</p>
              <strong> {product.price} </strong>
-             <button className="cardBtn" onClick={addToCart}> Add to Cart </button>
+             <button className="cardBtn" onClick={() => addToCart(product)}> Add to Cart </button>
           </div>
           ))}
 

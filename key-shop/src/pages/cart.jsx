@@ -18,8 +18,42 @@ function cart({cartItems}){
   }
 
  return(
-  <section>
-    <h1>Under Process</h1>
+  <section className="cartPage">
+    <div className="cartHeading">
+      <h1> Your Shopping cart</h1>
+
+       <button className="clearCartBtn">
+      Clear Cart
+    </button>
+    </div>
+
+    <div className="cartLayout">
+      <div className="cartItems">
+        {
+          cartItems.map((item)=> (
+          <div className="cartItem">
+            <img src={item.image} alt={item.name}></img>
+            <div className="cartItemDetails">
+              <h3> {item.name}</h3>
+              <p>{item.price} each</p>
+   
+            <div className="quantityBox">
+              <button> - </button>
+              <span>{item.quantity}</span>
+              <button> + </button>
+
+            </div>
+          </div>  
+ 
+          <div className="cartItemRight">
+            <strong> {item.price * item.quantity}</strong>
+            <button className="removeBtn">Remove</button>
+          </div>   
+        </div>
+           ))
+        }
+      </div>
+    </div>     
   </section>
  )
 

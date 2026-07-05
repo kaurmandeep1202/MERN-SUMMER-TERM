@@ -21,6 +21,11 @@ function App() {
   );
 
   function addToCart(product) {
+    
+    if(!product){
+      return;
+    }
+
     setCartItems((previousCartItems) => {
       const productAlreadyInCart = previousCartItems.find(
         (item) => item.id === product.id
