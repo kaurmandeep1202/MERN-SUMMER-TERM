@@ -6,8 +6,8 @@ function Home({ addToCart }) {
       name:'Cartoon Key Chain',
       description: 'colorful and cute design',
       price: 10,
-      image: '/images/cartoon.jpg'
-
+      image: '/images/cartoon.jpg',
+      stock: 4
     },
 
 
@@ -23,7 +23,8 @@ function Home({ addToCart }) {
       name:'Leather Key Chain',
       description: 'Classy and durable Look',
       price: 14,
-      image: '/images/leather.jpg'
+      image: '/images/leather.jpg',
+      stock: 3
     },
 
     {
@@ -31,7 +32,8 @@ function Home({ addToCart }) {
       name:'The Avenger Key Chain',
       description: 'Your super hero key chain',
       price: 13,
-      image: '/images/avenger.jpg'
+      image: '/images/avenger.jpg',
+      stock: 2
     }
 
    ];

@@ -207,3 +207,25 @@ function cart({cartItems, increaseQuantity, decreaseQuantity})
        }).filter((item) => item.quantity > 0);
     })
   }
+
+
+--search on google -- third party installation 
+-- cart is added so there are toasts messages in react 
+-- react-toastify and react-hot-toast 
+install from npm install react-hot-toast from react hot toast website 
+now just import on the top of app.jsx
+add <Toaster under the header also and paste the code in add to cart 
+ toast('Item added to the cart successfully!');
+-- we can add few features from the website only to the toaster only. 
+link https://react-hot-toast.com/
+
+
+
+-- now we have added stock to the home.jsx
+now we want to check if the stock is full and how many stock are there ? 
+
+
+
+
+ 
+

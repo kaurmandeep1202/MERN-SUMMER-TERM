@@ -12,6 +12,11 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/cart";
 
+import toast, { Toaster } from "react-hot-toast";
+ 
+
+
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
  
@@ -67,15 +72,25 @@ if (productAlreadyInCart) {
   });
 }
 
+      
+
       return [...previousCartItems, { ...product, quantity: 1 }];
     });
+
+     
+    if(product.stock > 3){
+      toast.error(product.name+ 'Sorry, we have limited stock. Please check back later!');
+    }
+    else{
+    toast.success(product.name+ ' added to the cart successfully!');
+    }
   }
 
   return (
     <BrowserRouter>
       <div className="App">
         <Header cartCount={cartCount} />
-
+          <Toaster position='top-center' reverseOrder={true} />
         <main>
           <Routes>
             <Route path="/" element={<Home addToCart={addToCart} />} />
