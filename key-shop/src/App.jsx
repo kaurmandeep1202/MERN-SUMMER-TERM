@@ -78,12 +78,12 @@ if (productAlreadyInCart) {
     });
 
      
-    if(product.stock > 3){
-      toast.error(product.name+ 'Sorry, we have limited stock. Please check back later!');
-    }
-    else{
+    // if(product.stock > 3){
+    //   toast.error(product.name+ 'Sorry, we have limited stock. Please check back later!');
+    // }
+    // else{
     toast.success(product.name+ ' added to the cart successfully!');
-    }
+    // }
   }
 
   return (
