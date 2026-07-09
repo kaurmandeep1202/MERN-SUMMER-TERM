@@ -50,41 +50,55 @@ function App() {
 
 
   function addToCart(product) {
-    
-    if(!product){
-      return;
+
+  if (!product) {
+    return;
+  }
+
+  setCartItems((previousCartItems) => {
+
+    const productAlreadyInCart = previousCartItems.find(
+      (item) => item.id === product.id
+    );
+
+    const quantity = productAlreadyInCart
+      ? productAlreadyInCart.quantity
+      : 0;
+
+    if (product.stock < quantity + 1) {
+      toast.error(`Sorry, ${product.name} is out of stock`, {
+        id: "cart-toast",
+      });
+
+      return previousCartItems;
     }
 
-    setCartItems((previousCartItems) => {
-      const productAlreadyInCart = previousCartItems.find(
-        (item) => item.id === product.id
+    if (productAlreadyInCart) {
+
+      toast.success(`${product.name} added to the cart successfully!`, {
+        id: "cart-toast",
+      });
+
+      return previousCartItems.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item
       );
-
-if (productAlreadyInCart) {
-  return previousCartItems.map((item) => {
-    if (item.id === product.id) {
-      return {
-        ...item,
-        quantity: item.quantity + 1,
-      };
     }
-    return item;
-  });
-}
 
-      
-
-      return [...previousCartItems, { ...product, quantity: 1 }];
+    toast.success(`${product.name} added to the cart successfully!`, {
+      id: "cart-toast",
     });
 
-     
-    // if(product.stock > 3){
-    //   toast.error(product.name+ 'Sorry, we have limited stock. Please check back later!');
-    // }
-    // else{
-    toast.success(product.name+ ' added to the cart successfully!');
-    // }
-  }
+    return [...previousCartItems, { ...product, quantity: 1 }];
+
+  }); // closes setCartItems
+} // closes addToCart
+    
+ 
 
   return (
     <BrowserRouter>

@@ -5,6 +5,10 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart}) {
    
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
+
+ 
+
+
     const totalItems = cartItems.reduce((total,item) => total + item.quantity ,0);
 
   if(cartItems.length === 0){

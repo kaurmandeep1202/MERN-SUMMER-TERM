@@ -24,6 +24,7 @@ come out of current program - ctrl c
 
 dummyjson.com 
 
+
 next.js - framework react -  admin panel -- ecommerce shop for selling an keychains  
 automatic file based routing server rendering image font script 
 react components, next.js frameworks , production web app 
@@ -223,6 +224,426 @@ link https://react-hot-toast.com/
 
 -- now we have added stock to the home.jsx
 now we want to check if the stock is full and how many stock are there ? 
+
+
+
+it will be very annoying when there is flooding of messages then 
+add only toast.success with  {id:"cart-toast"};
+function addToCart(product) {
+
+  if (!product) {
+    return;
+  }
+
+  setCartItems((previousCartItems) => {
+
+    const productAlreadyInCart = previousCartItems.find(
+      (item) => item.id === product.id
+    );
+
+    const quantity = productAlreadyInCart
+      ? productAlreadyInCart.quantity
+      : 0;
+
+    if (product.stock < quantity + 1) {
+      toast.error(`Sorry, ${product.name} is out of stock`, {
+        id: "cart-toast",
+      });
+
+      return previousCartItems;
+    }
+
+    if (productAlreadyInCart) {
+
+      toast.success(`${product.name} added to the cart successfully!`, {
+        id: "cart-toast",
+      });
+
+      return previousCartItems.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item
+      );
+    }
+
+    toast.success(`${product.name} added to the cart successfully!`, {
+      id: "cart-toast",
+    });
+
+    return [...previousCartItems, { ...product, quantity: 1 }];
+
+  }); // closes setCartItems
+} // closes addToCart
+
+
+
+=============================================================
+
+NOWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+CREATE ONE FOLDER WHICH IS key-shop-apis
+
+1. Create the backend
+--mkdir key-shop-apis
+--cd  key-shop-apis
+--npm init -y  // see the json file there -- iniitialte the project node -- package.json file will be created automatically after that command
+
+--npm install express mongoose cors dotenv // third party library 
+   for this whole command - // exprees - framwwork of node js -- just type first npm install express - u will get only node_modules folder
+   now install -- npm install mongoose
+   then npm install cors
+   then npm install dotenv
+
+--npm install -D nodemon  
+
+Suggested Archtecture
+key-shop-apis/
+├── models/   //make folder
+│   └── Product.js
+├── routes/
+│   └── productRoutes.js
+├── .env
+├── .gitignore
+└── server.js
+
+2. Configure environment variables
+backend/.env:
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:270
+
+For MongoDB Atlas, use its connection string instead.
+
+Never commit .env:
+node_modules
+.env
+
+3. Create the product model
+models/Product.js:
+    
+    import mongoose from "mongoose";
+
+const productSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    stock: {
+      type: Number,
+      required: true,
+      min: 0
+    }
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform(doc, object) {
+        delete object._id;
+      }
+    }
+  }
+);
+
+export default mongoose.model("Product", productSchema);
+
+The JSON configuration exposes MongoDB’s _id as id, matching your existing product.id cart logic.
+
+4. Create the products route
+routes/productRoutes.js:
+    
+    import express from "express";
+import Product from "../models/Product.js";
+
+const router = express.Router();
+
+router.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+
+    res.status(200).json({
+      success: true,
+      products
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Unable to fetch products"
+    });
+  }
+});
+
+export default router;
+GET http://localhost:5000/api/products
+5. Create the Express server
+server.js:
+    
+    import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import productRoutes from "./routes/productRoutes.js";
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors({ origin: "http://localhost:5173" }));
+app.use(express.json());
+
+app.use("/api/products", productRoutes);
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running on port ${process.env.PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database connection failed:", error.message);
+  });
+
+Add to backend/package.json:
+    "type": "module",
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+6. Add products to MongoDB
+Create a products collection and insert documents such as:
+    {
+  "name": "Cartoon Key Chain",
+  "description": "Colorful and cute design.",
+  "price": 99,
+  "image": "/images/shopping.webp",
+  "stock": 10
+}
+7. Fetch products in Home.jsx
+import { useEffect, useState } from "react";
+
+const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
+
+useEffect(() => {
+  async function fetchProducts() {
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+
+      if (!response.ok) {
+        throw new Error("Unable to fetch products");
+      }
+
+      const data = await response.json();
+      setProducts(data.products);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchProducts();
+}, []);
+Handle loading and errors before rendering:
+
+if (loading) return <p>Loading products...</p>;
+if (error) return <p>{error}</p>;
+Your existing products.map(...) can remain largely unchanged.1. Create the backend
+mkdir key-shop-apis
+cd  key-shop-apis
+npm init -y
+npm install express mongoose cors dotenv
+npm install -D nodemon
+
+Suggested Archtecture
+key-shop-apis/
+├── models/
+│   └── Product.js
+├── routes/
+│   └── productRoutes.js
+├── .env
+├── .gitignore
+└── server.js
+
+2. Configure environment variables
+backend/.env:
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:270
+
+For MongoDB Atlas, use its connection string instead.
+
+Never commit .env:
+node_modules
+.env
+
+3. Create the product model
+models/Product.js:
+    
+    import mongoose from "mongoose";
+
+const productSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    image: {
+      type: String,
+      required: true
+    },
+    stock: {
+      type: Number,
+      required: true,
+      min: 0
+    }
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform(doc, object) {
+        delete object._id;
+      }
+    }
+  }
+);
+
+export default mongoose.model("Product", productSchema);
+
+The JSON configuration exposes MongoDB’s _id as id, matching your existing product.id cart logic.
+
+4. Create the products route
+routes/productRoutes.js:
+    
+    import express from "express";
+import Product from "../models/Product.js";
+
+const router = express.Router();
+
+router.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+
+    res.status(200).json({
+      success: true,
+      products
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Unable to fetch products"
+    });
+  }
+});
+
+export default router;
+GET http://localhost:5000/api/products
+5. Create the Express server
+server.js:
+    
+    import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import productRoutes from "./routes/productRoutes.js";
+
+dotenv.config();
+
+const app = express();
+
+app.use(cors({ origin: "http://localhost:5173" }));
+app.use(express.json());
+
+app.use("/api/products", productRoutes);
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running on port ${process.env.PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database connection failed:", error.message);
+  });
+
+Add to backend/package.json:
+    "type": "module",
+"scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+}
+6. Add products to MongoDB
+Create a products collection and insert documents such as:
+    {
+  "name": "Cartoon Key Chain",
+  "description": "Colorful and cute design.",
+  "price": 99,
+  "image": "/images/shopping.webp",
+  "stock": 10
+}
+7. Fetch products in Home.jsx
+import { useEffect, useState } from "react";
+
+const [products, setProducts] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
+
+useEffect(() => {
+  async function fetchProducts() {
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+
+      if (!response.ok) {
+        throw new Error("Unable to fetch products");
+      }
+
+      const data = await response.json();
+      setProducts(data.products);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchProducts();
+}, []);
+Handle loading and errors before rendering:
+
+if (loading) return <p>Loading products...</p>;
+if (error) return <p>{error}</p>;
+Your existing products.map(...) can remain largely unchanged.
 
 
 

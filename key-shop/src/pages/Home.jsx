@@ -74,7 +74,7 @@ function Home({ addToCart }) {
                </div> 
              <h3>{product.name} </h3>
              <p> {product.description}</p>
-             <strong> {product.price} </strong>
+             <strong> ${product.price} </strong>
              <button className="cardBtn" onClick={() => addToCart(product)}> Add to Cart </button>
           </div>
           ))}
