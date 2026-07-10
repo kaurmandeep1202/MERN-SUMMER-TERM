@@ -292,8 +292,14 @@ CREATE ONE FOLDER WHICH IS key-shop-apis
 
 --npm install express mongoose cors dotenv // third party library 
    for this whole command - // exprees - framwwork of node js -- just type first npm install express - u will get only node_modules folder
+   lesser code for node js 
+
    now install -- npm install mongoose
-   then npm install cors
+   -- connect mongodb with node js application
+
+   then npm install cors // later 
+
+
    then npm install dotenv
 
 --npm install -D nodemon  
@@ -304,9 +310,27 @@ key-shop-apis/
 │   └── Product.js
 ├── routes/
 │   └── productRoutes.js
-├── .env
+├── .env  // package used to read -variables declared read by this -url
+            secret keys are protected by this 
+
 ├── .gitignore
 └── server.js
+
+IN .ENV WRITE ALL THIS BELOW: 
+========== HERE YOU GO TO THE ALTAS MONGODB ,
+THEN U GO TO THE CLUSTERS - CONNECT - COPY THE PATH -  
+THEN Access your Database Users - EDIT THE PASSWORD  - THEN EDIT IT - NEW PASSWORD THEN UPDATE IT 
+MAKE LIKE THIS 
+MONGO_URI = mongodb+srv://kaurmandeep272002_db_user:2023@project-clusters.qicvdhn.mongodb.net/
+AFTER SLASH ADD DATABASE 
+MONGO_URI = mongodb+srv://kaurmandeep272002_db_user:2023@project-clusters.qicvdhn.mongodb.net/key-shop
+THEN 
+PORT = 3000 
+
+
+=============== REQUEST RESPONSE CYCLE IN NODE JS
+IN PRODUCTROUTE.JS
+
 
 2. Configure environment variables
 backend/.env:
@@ -374,6 +398,7 @@ import Product from "../models/Product.js";
 
 const router = express.Router();
 
+//REQUEST RESPONSE CYCLE IN NODE JS
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
