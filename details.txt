@@ -390,6 +390,17 @@ export default mongoose.model("Product", productSchema);
 
 The JSON configuration exposes MongoDB’s _id as id, matching your existing product.id cart logic.
 
+
+
+route -- 
+part of express
+created / - get route and post route 
+
+route: specific house address
+router: looks at the map, and figures out exactly how to get you there
+
+
+
 4. Create the products route
 routes/productRoutes.js:
     
@@ -417,10 +428,48 @@ router.get("/", async (req, res) => {
 
 export default router;
 GET http://localhost:5000/api/products
+
+
+
+3 july
+rdbms 
+json collection 
+vs
+database table 
+
+schema - data about data 
+predefined department - enumeration database 
+ - node js 
+ runtime environment - outside the browser window 
+
+ backened services  -apis - mongodb collection then showing 
+ static hard coded array - 
+ -- live stream -- updates happens instantly - without reloading and database 
+ -- node js does
+ socket listener and all they used to do 
+
+ cli tools -- before starting server - we run the command node --- sudo run ..alll -- cli 
+
+ mutliplayers games work -- servers 
+
+ node js and other - is collection oriented -- keeps on waiting and then response -- that cycle explain 
+request to server - receives - response (to the data)
+when u send request -- call api 
+check data through mongo db 
+availaible process - preprocess the data 
+send the data through reposnse object 
+see the data 
+example lpu touch -- 
+
+static site - product array - not able to fetch the data 
+to upgrade the data 
+steps follow
+
+
 5. Create the Express server
 server.js:
     
-    import express from "express";
+import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
