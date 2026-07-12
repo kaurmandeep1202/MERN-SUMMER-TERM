@@ -752,7 +752,7 @@ app.use(express.json())
 
 
 
-STATUS CODES
+HTTP STATUS CODES
 
 | Code           | Meaning       | 
 When to Use                                 |
@@ -784,10 +784,55 @@ if (!product) {
   });
 }
 
+ 
+MONGO DB + MONGOOSE
+
+MOngo db queries
+engine of a car - helps to connect \
+1. create database and collection in json file insertone insertmany 
+ use show dbs, insert , delete 
+ use - switch to the db or use 
+ show dbs- fetch all information 
+ crete collection - 
+ insert one - one document
+
+2. understand document structure - key value pair 
+ undertand structure  
+ db - collection - document and field 
+ document - record  
+
+3. bson datatypes
+array boolean string number date object( 3 fields - whole is object ) objectid - 
+
+4. crud operations
+insertone - create add - , insertmany, find - read, updateone - update the data - change , delete many - data 
+
+5. query operators and aggregation  - find and analyse the data
+comparison, logical, arrays ,sorts, indexes , group 
+
+db -school 
+collection - classes
+document - student 
+each have name id - field 
+
+mongodb stores in the form of json document instead of fixed rows and columns 
+faster to retreive 
+easy to read 
+flexible  - scheme validation 
+good for changing data 
 
 
+tools - mongodb atlas - cloud db - not to install  
+local server  - community server install -- connect with mongosh(shell)
+compass gui  - buttons and menus u can perform instead of writing commands 
 
- HTTP STATUS CODE
- MONGO DB + MONGOOSE
+mongosh -v  -- check shell version 
+connect locally mongosh 
+basic health check show dbs 
 
+mongosh - start
+use schooldb -- switch to database 
+db.createcollection("student") -- create collection 
+db.students.insertone((...)) -- insert first document
+show dbs - check result 
 
