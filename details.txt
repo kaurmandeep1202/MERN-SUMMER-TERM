@@ -836,3 +836,30 @@ db.createcollection("student") -- create collection
 db.students.insertone((...)) -- insert first document
 show dbs - check result 
 
+
+
+
+
+
+now one thing to add is to add a confirmation dailogue card -- r u want to clear the cart 
+ add in cart section 
+    const handleClearCart = () => {
+    const confirmClear = window.confirm("Are you sure you want to clear the cart");
+
+    if(confirmClear){
+      clearCart();
+    } 
+we have done all about the clear cart dialogue box and we have made cart div and done all the things regarding to that ...
+
+
+symbol of & 
+ternary condition --- if true 
+
+z-index == front or back that dialog appears 
+
+
+
+
+
+
+

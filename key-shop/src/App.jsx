@@ -48,19 +48,15 @@ function App() {
     setCartItems([]);
   }
 
-
   function addToCart(product) {
-
   if (!product) {
     return;
   }
 
   setCartItems((previousCartItems) => {
-
     const productAlreadyInCart = previousCartItems.find(
       (item) => item.id === product.id
     );
-
     const quantity = productAlreadyInCart
       ? productAlreadyInCart.quantity
       : 0;
@@ -69,16 +65,13 @@ function App() {
       toast.error(`Sorry, ${product.name} is out of stock`, {
         id: "cart-toast",
       });
-
       return previousCartItems;
     }
 
     if (productAlreadyInCart) {
-
       toast.success(`${product.name} added to the cart successfully!`, {
         id: "cart-toast",
       });
-
       return previousCartItems.map((item) =>
         item.id === product.id
           ? {
@@ -100,6 +93,12 @@ function App() {
     
  
 
+function removeItem(productId) {
+  setCartItems((previousCartItems) =>
+    previousCartItems.filter((item) => item.id !== productId)
+  );
+}
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -112,7 +111,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Home />} />
-            <Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearCart={clearCart}/>}/>
+            <Route path="/cart" element={<Cart cartItems={cartItems}  increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} clearCart={clearCart}
+            removeItem={removeItem}/>}/>
           </Routes>
           
         </main>
