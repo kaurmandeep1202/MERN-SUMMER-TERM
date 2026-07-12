@@ -722,5 +722,72 @@ Your existing products.map(...) can remain largely unchanged.
 
 
 
+ ===============================================================================================================================================================================================================
+ NODE JS BASICS
+ NPM AND MODULES 
+ moduules - reusable file or package 
+ types - 2. local - create custom modules - by writing -- calculator -- function which can be reusable -- delete add , 1. core - fs modules - automatically built in , os example , 3. third party -- 
+
+
+ EXPRESS.JS
+ express js - create server and APIS - popular framwork of node js 
+app , res, req, app.get - routing part - response that server is running , listen 
+need to create port number -- app.listen 
+..u have tp write in .env file -- secret and sensitive information 
+
+
+
+ mongoose - connect node js with mongodb
+
+
  
+ REST APIS
+standard way to create backend endpoint - represented to the client 
+using http 
+get - read data - one data
+post - create new data \
+put/ patch  - update data 
+delete 
+app.use(express.json())
+
+
+
+STATUS CODES
+
+| Code           | Meaning       | 
+When to Use                                 |
+| ----------------------------- | ---------------------------- | ------------------------------------------- |
+| **200 OK**                    | Success                      
+| Data fetched successfully
+                   
+| **201 Created**               | New resource created         | Product/User created  
+                      
+| **204 No Content**            | Success but no response body | Deleted successfully without returning data |
+
+| **400 Bad Request**           | Invalid input                | Required field missing                      |
+
+| **401 Unauthorized**          | Login required               | No token or invalid token                   |
+
+| **403 Forbidden**             | Access denied                | User logged in but not allowed              |
+
+| **404 Not Found**             | Resource not found           | Product ID does not exist                   |
+
+| **409 Conflict**              | Duplicate/Conflict           | Email already registered                    |
+
+| **500 Internal Server Error** | Server problem               | Database/server crash                       |
+
+EXAMPLE
+if (!product) {
+  return res.status(404).json({
+    success: false,
+    message: "Product not found"
+  });
+}
+
+
+
+
+ HTTP STATUS CODE
+ MONGO DB + MONGOOSE
+
 
