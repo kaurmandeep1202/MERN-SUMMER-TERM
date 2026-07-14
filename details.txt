@@ -858,6 +858,14 @@ ternary condition --- if true
 z-index == front or back that dialog appears 
 
 
+-42.00 resume 10 july 
+now we are going to make a login in cart.jsx 
+
+
+2 factor otp -- website 
+
+-8.21 10 july 
+resume kro 
 
 
 

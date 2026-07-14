@@ -10,6 +10,81 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
   const [showItemConfirmation, setShowItemConfirmation] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
+
+  // LOGIN STATES
+  const [showLogin, setShowLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [loginError, setLoginError] = useState({});
+  const [loginMessage, setLoginMessage] = useState('');
+
+  const handleLoginInput = (e) => {
+    const { name, value } = e.target;
+
+    setLoginData((prevData) => ({
+        ...prevData,
+        [name]: value,
+    }));
+
+    setLoginError(prevError => ({
+       ...prevError,
+       [name]: ''
+    })
+  );
+
+   setLoginMessage('');
+};
+
+   const validateLogin = () => {
+    const errors = {};
+
+    if (!loginData.email) {
+        errors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(loginData.email)) {
+        errors.email = "Please enter a valid email address";
+    }
+
+    if (!loginData.password) {
+        errors.password = "Password is required";
+    }
+    else if (loginData.password.length < 6) {
+    errors.password = "Password must be at least 6 characters long";
+}
+
+    return errors;
+};
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const errors = validateLogin();
+    if (Object.keys(errors).length > 0) {
+        setLoginError(errors);
+        return;
+    }
+};
+  
+ setIsLoggedIn(true);
+ setLoggedInUser(loginData.email);
+ setLoginMessage("Login Successful");
+
+ setShowLogin(false);
+ handleCheckOut();
+
+   
+ const handleCheckOut = () => {
+    alert("Checkout Started Successfully!!");
+};
+
+
+
+
+
   if(cartItems.length === 0){
     return(
       <section className="cartPage emptyCart"> 
@@ -115,7 +190,10 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
         <span> Total Amount</span>
         <strong> ${totalAmount}</strong>
       </div>    
-        <button className="checkOutBtn">Proceed To Checkout</button>
+        <button className="checkOutBtn" onClick={handleCheckOut}
+>   {isLoggedIn
+        ? "Proceed to Checkout"
+        : "Login to Checkout"}Proceed To Checkout</button>
         <Link to="/" className="continueLink">Continue Shopping </Link>
     </div>  
 
@@ -171,7 +249,45 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
   </div>
 )}
 
+ 
 
+ {/* Login Modal */}
+
+{showLogin && (
+    <div className="modal">
+        <div className="modalContent">
+            <h3>Login</h3>
+
+            <form onSubmit={handleLogin}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={loginData.email}
+                    onChange={(e) =>
+                        setLoginData({
+                            ...loginData,
+                            email: e.target.value,
+                        })
+                    }
+                />
+
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={loginData.password}
+                    onChange={(e) =>
+                        setLoginData({
+                            ...loginData,
+                            password: e.target.value,
+                        })
+                    }
+                />
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+)}
 
 
   </section>
