@@ -2,7 +2,12 @@ import {Link} from 'react-router-dom';
 import { useState } from "react";
  
 
-function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeItem,}) {
+function cart({cartItems,
+           increaseQuantity, 
+           decreaseQuantity, 
+           clearCart,
+           removeItem,
+          }) {
    
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   const totalItems = cartItems.reduce((total,item) => total + item.quantity ,0);
@@ -67,17 +72,22 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
         setLoginError(errors);
         return;
     }
-};
+ 
   
- setIsLoggedIn(true);
+ setIsLogin(true);
  setLoggedInUser(loginData.email);
  setLoginMessage("Login Successful");
 
  setShowLogin(false);
  handleCheckOut();
 
+};
    
  const handleCheckOut = () => {
+  if(!isLogin){
+    setShowLogin(true);
+    return;
+  }
     alert("Checkout Started Successfully!!");
 };
 
@@ -190,10 +200,10 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
         <span> Total Amount</span>
         <strong> ${totalAmount}</strong>
       </div>    
-        <button className="checkOutBtn" onClick={handleCheckOut}
->   {isLoggedIn
-        ? "Proceed to Checkout"
-        : "Login to Checkout"}Proceed To Checkout</button>
+
+       <button className="checkOutBtn" onClick={handleCheckOut}>
+    {isLogin ? "Proceed to Checkout" : "Login to Checkout"}
+</button>
         <Link to="/" className="continueLink">Continue Shopping </Link>
     </div>  
 
@@ -207,6 +217,7 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
      {showConfirmation && (
   <div className="modal">
     <div className="modalContent">
+
       <h3>Clear Cart</h3>
       <p>Are you sure you want to remove all items?</p>
 
@@ -254,36 +265,46 @@ function cart({cartItems, increaseQuantity, decreaseQuantity, clearCart,removeIt
  {/* Login Modal */}
 
 {showLogin && (
-    <div className="modal">
+    <div className="modalOverlay">
         <div className="modalContent">
             <h3>Login</h3>
 
+{loginMessage && (
+    <p className="success">{loginMessage}</p>
+)}
+
             <form onSubmit={handleLogin}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={loginData.email}
-                    onChange={(e) =>
-                        setLoginData({
-                            ...loginData,
-                            email: e.target.value,
-                        })
-                    }
-                />
+               <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    value={loginData.email}
+    onChange={handleLoginInput}
+/>
+
+{loginError.email && <p className="error">{loginError.email}</p>}
 
                 <input
-                    type="password"
-                    placeholder="Password"
-                    value={loginData.password}
-                    onChange={(e) =>
-                        setLoginData({
-                            ...loginData,
-                            password: e.target.value,
-                        })
-                    }
-                />
+    type="password"
+    name="password"
+    placeholder="Password"
+    value={loginData.password}
+    onChange={handleLoginInput}
+/>
+
+{loginError.password && <p className="error">{loginError.password}</p>}
 
                 <button type="submit">Login</button>
+
+
+ <button
+        type="button"
+        className="cancelBtn"
+        onClick={() => setShowLogin(false)}
+    >
+        Cancel
+    </button>
+
             </form>
         </div>
     </div>
