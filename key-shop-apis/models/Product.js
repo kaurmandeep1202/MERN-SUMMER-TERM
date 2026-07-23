@@ -1,44 +1,41 @@
-//import mongoose from "mongoose";
 const mongoose = require("mongoose");
-
 
 const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     price: {
       type: Number,
       required: true,
-      min: 0
+      min: 0,
     },
     image: {
       type: String,
-      required: true
+      required: true,
     },
     stock: {
       type: Number,
       required: true,
-      min: 0
-    }
+      min: 0,
+    },
   },
   {
     timestamps: true,
     toJSON: {
       virtuals: true,
       versionKey: false,
-      transform(doc, object) {
-        delete object._id;
-      }
-    }
+      transform(doc, ret) {
+        delete ret._id; // Remove _id from JSON response
+      },
+    },
   }
 );
 
-//export default mongoose.model("Product", productSchema);
-module.exports = mongoose.model("Product", productSchema)
+module.exports = mongoose.model("Product", productSchema);

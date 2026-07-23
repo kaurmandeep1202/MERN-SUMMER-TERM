@@ -1,25 +1,25 @@
-
-// import express from "express";
-// import Product from "../models/Product.js";
-
 const express = require("express");
-const Product = require("../models/Product.js")
+const Product = require("../models/Product");
+
 const router = express.Router();
 
+// GET all products
 router.get("/", async (req, res) => {
-try {
-const products = await Product.find();
+  try {
+    const products = await Product.find();
 
-res.status(200).json({
-success: true,
-products
-});
-} catch (error) {
-res.status(500).json({
-success: false,
-message: "Unable to fetch products"
-});
-}
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      products,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Unable to fetch products",
+      error: err.message,
+    });
+  }
 });
 
-export default router;
+module.exports = router;

@@ -553,7 +553,7 @@ nav ul li a:hover {
     padding:12px;
     border:none;
     border-radius:8px;
-    background:#6c63ff;
+    background:#5a52f2;
     color:white;
     font-size:17px;
     font-weight:600;
@@ -562,13 +562,13 @@ nav ul li a:hover {
 }
 
 .modalContent button:hover{
-    background:#5448e5;
+    background:#366e22;
 }
 
 .error{
     margin-top:-12px;
     font-size:13px;
-    color:red;
+    color:rgb(241, 136, 136);
 }
 
 .success{

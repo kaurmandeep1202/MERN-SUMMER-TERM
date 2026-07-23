@@ -867,7 +867,12 @@ now we are going to make a login in cart.jsx
 -8.21 10 july 
 resume kro 
 
+-40.00 11 july
 
+
+aws / express -- 
+
+product route -- show u on frontend and -- diivde 
 
 
 
