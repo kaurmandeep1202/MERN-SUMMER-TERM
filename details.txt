@@ -873,6 +873,35 @@ resume kro
 aws / express -- 
 
 product route -- show u on frontend and -- diivde 
+fetch product from api -- app in -- divide it into file by file -- module ---
+write the code to manage efficiently 
+separate file -- so that user can see and understand ---for what module 
+-- using routes file over there 
+router.post("\save-new-project",async(req,res) => {})
+get, post,put, delete, patch
+
+
+.//tool required for us 
+download postman okii 
+install extension from vs -- thunder client -- no remove -- not free
+
+postman login 
+then collection Add 
+name it
+then add request 
+then go to the productroutes .. first api is 
+
+means u have to write this 
+localhost:3000/api/products/save-new-product
+then click on body then x-www something
+ then add all details like name description then price imageurl 
+ then go to amazon and do all the things name price and all url 
+then click on send last 
+
+add this in productroutes
+app.use(express.urlencoded({extended: true}));
+restart
+
 
 
 

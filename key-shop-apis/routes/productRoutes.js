@@ -3,7 +3,9 @@ const Product = require("../models/Product");
 
 const router = express.Router();
 
-// GET all products
+/* ============================================
+   GET ALL PRODUCTS
+============================================ */
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
@@ -13,11 +15,44 @@ router.get("/", async (req, res) => {
       count: products.length,
       products,
     });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({
       success: false,
       message: "Unable to fetch products",
-      error: err.message,
+      error: error.message,
+    });
+  }
+});
+
+/* ============================================
+   SAVE NEW PRODUCT
+============================================ */
+router.post("/save-new-product", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    const { name, description, price, image, stock } = req.body;
+
+    const newProduct = new Product({
+      name,
+      description,
+      price,
+      image,
+      stock,
+    });
+
+    await newProduct.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Product saved successfully",
+      product: newProduct,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Unable to save new product",
+      error: error.message,
     });
   }
 });
